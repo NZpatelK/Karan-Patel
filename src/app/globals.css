@@ -1,43 +1,13 @@
 :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+  --bg-color: #081b29;
+  --main-color: #00abf0;
+  --text-color: #333;
+  --second-color: #555;
+  --white-color: #fff;
+  --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
+  --pages-color: linear-gradient(90deg, #fff, #ddd);
+  --border: .125rem solid #00abf0;
+  --box-shadow: 0 0 .6rem rgba(0,0,0,.2);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,6 +47,9 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  text-decoration: none;
+  border: none;
+  outline: none;
 }
 
 html,
