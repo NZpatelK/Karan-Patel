@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
-import './page.module.css';
+import Image from "next/image";
+import styles from "./page.module.css";
 
-const BookFlip: React.FC = () => {
-
-
-
+export default function Home() {
   return (
-    <div className="wrapper">
-      <div className="cover cover-left"></div>
-      <div className="cover cover-right"></div>
-    </div>
-
+    <main>
+      <div className={styles.wrapper}>
+        <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
+        <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
+      </div>
+    </main>
   );
-};
-
-export default BookFlip;
+}
