@@ -6,7 +6,15 @@ export default function Home() {
     <main>
       <div className={styles.wrapper}>
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
-        <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
+        <div className={[styles.cover, styles["cover-right"], styles.turn].join(" ")}></div>
+
+        <div className="book">
+          <div className="book-page page-left">
+            <div className="profile-page">
+            <h1>Hsssello</h1>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
