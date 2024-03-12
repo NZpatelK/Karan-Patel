@@ -1,6 +1,7 @@
 'use client';
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useEffect } from "react";
 
 
 export default function Home() {
@@ -11,22 +12,59 @@ export default function Home() {
 
     if (pageId?.classList.contains(styles.turn)) {
       pageId?.classList.remove(styles.turn);
-      // setTimeout(() => {
-      //   if (pageId) {
-      //     pageId.style.zIndex = (20 - 1).toString();
-      //   }
-      // }, 500);
+      setTimeout(() => {
+        if (pageId) {
+          pageId.style.zIndex = (20 - 1).toString();
+        }
+      }, 500);
     } else {
       pageId?.classList.add(styles.turn);
-      // setTimeout(() => {
-      //   if (pageId) {
-      //     pageId.style.zIndex = (20 + 1).toString();
-      //   }
-      // }, 500);
+      setTimeout(() => {
+        if (pageId) {
+          pageId.style.zIndex = (20 + 1).toString();
+        }
+      }, 500);
+    }
+  }
+
+  useEffect(() => {
+
+    const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
+    const totalPage = pages.length;
+    let currentPage = 0;
+
+    const reversePage = () => {
+      currentPage--;
+      if (currentPage < 0) {
+        currentPage = totalPage - 1;
+      }
+    };
+
+
+    const coverRight = document.querySelector<HTMLElement>(`.${styles["cover-right"]}`);
+
+    if (coverRight) {
+      setTimeout(() => {
+        coverRight.classList.add(styles["turn"]);
+      }, 2100);
+
+      setTimeout(() => {
+        coverRight.style.zIndex = "-1";
+      }, 2000);
     }
 
+    pages.forEach((_, index) => {
+      setTimeout(() => {
+        reversePage();
+        (pages[currentPage] as HTMLElement).classList.remove(styles["turn"]);
 
-  }
+        setTimeout(() => {
+          reversePage();
+          (pages[currentPage] as HTMLElement).style.zIndex = (10 + index).toString();
+        }, 500);
+      }, (index + 1) * 200 + 2100);
+    });
+  }, []);
 
 
   return (
@@ -45,7 +83,7 @@ export default function Home() {
           {Array.from({ length: 10 }).map((_, index) => (
             <div
               key={`turn-${index}`}
-              className={[styles["book-page"], styles["page-right"]].join(" ")}
+              className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}
               id={`turn-${index}`}>
 
               {/* Front page */}
@@ -67,7 +105,7 @@ export default function Home() {
               {/* Back page */}
 
               <div className={styles["page-back"]}>
-                <h1 style={{ color: "#000" }}>page{index}</h1>
+                <h1 style={{ color: "#000" }}>page{index+1}</h1>
                 <span className={styles["number-page"]} style={{ color: "#000", fontSize: "10px" }}>{index}</span>
                 {/* <span className={[styles["nextprev-btn"], styles["back"]].join(" ")} data-page="turn-2">
                   next
@@ -75,7 +113,7 @@ export default function Home() {
               </div>
             </div>
           ))}
-          
+
         </div>
       </div>
     </main>
