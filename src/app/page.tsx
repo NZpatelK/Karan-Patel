@@ -1,21 +1,34 @@
+'use client';
 import Image from "next/image";
 import styles from "./page.module.css";
 
+
 export default function Home() {
 
-  const handle = (page: any) =>{
+  const handleTurnPage = (page: any) =>{
 
     const pageId = document.getElementById(page);
 
     if (pageId?.classList.contains(styles.turn)) {
       pageId?.classList.remove(styles.turn);
-    }
-    else {
+      // setTimeout(() => {
+      //   if (pageId) {
+      //     pageId.style.zIndex = (20 - 1).toString();
+      //   }
+      // }, 500);
+    } else {
       pageId?.classList.add(styles.turn);
+      // setTimeout(() => {
+      //   if (pageId) {
+      //     pageId.style.zIndex = (20 + 1).toString();
+      //   }
+      // }, 500);
     }
 
 
   }
+
+  
   return (
     <main>
       <div className={styles.wrapper}>
@@ -37,17 +50,14 @@ export default function Home() {
                 <h1 style={{ color: "#000" }}>page2</h1>
               </div>
               <span className={styles["number-page"]} style={{ color: "#000", fontSize: "10px" }}>1</span>
-              <span className={styles["nextprev-btn"]} data-page="turn-1">
+              <span className={styles["nextprev-btn"]} data-page="turn-1"  onClick={(event) => handleTurnPage("turn-1")}>
                 next
               </span>
             </div>
-            <div className={styles["page-back"]}>
-              <h1 style={{ color: "#000" }}>page3</h1>
-              <span className={styles["number-page"]} style={{ color: "#000", fontSize: "10px" }}>2</span>
-              <span className={[styles["nextprev-btn"], styles["back"]].join(" ")} data-page="turn-1">
-                next
-              </span>
-            </div>
+
+            <span className={[styles["nextprev-btn"], styles["back"]].join(" ")} data-page="turn-2" onClick={(event) => handleTurnPage("turn-1")}>
+              next
+            </span>
           </div>
 
           {/* page 3 & 4 */}
@@ -58,16 +68,17 @@ export default function Home() {
                 <h1 style={{ color: "#000" }}>page4</h1>
               </div>
               <span className={styles["number-page"]} style={{ color: "#000", fontSize: "10px" }}>1</span>
-              <span className={styles["nextprev-btn"]} data-page="turn-1">
+              <span className={styles["nextprev-btn"]} data-page="turn-2" onClick={(event) => handleTurnPage("turn-1")}>
                 next
               </span>
             </div>
+
             <div className={styles["page-back"]}>
               <h1 style={{ color: "#000" }}>page5</h1>
               <span className={styles["number-page"]} style={{ color: "#000", fontSize: "10px" }}>2</span>
-              <span className={[styles["nextprev-btn"], styles["back"]].join(" ")} data-page="turn-1">
+              {/* <span className={[styles["nextprev-btn"], styles["back"]].join(" ")} data-page="turn-2">
                 next
-              </span>
+              </span> */}
             </div>
           </div>
 
