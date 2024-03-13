@@ -1,27 +1,36 @@
 import React from 'react';
 import '../styles/Profile.css';
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin, faSquareInstagram } from '@fortawesome/free-brands-svg-icons';
+import Image from 'next/image'; // Import the Image component from next/image package
 
 const Profile: React.FC = () => {
     return (
         <div className='profile-section'>
+
+            <Image src='https://avatars.githubusercontent.com/u/60243726?v=4' alt='profile' className='profileImg' width={200} height={200} /> {/* Replace <img> with <Image> */}
+
             <h1>Karan Patel</h1>
+
+            {/* TODO: add the list of different roles */}
             <h3>Web Development</h3>
 
-            <div>
-                <span>
-                    Github
-                </span>
-                <span>
-                    Linkedln
-                </span>
-                <span>
-                    Instagram
-                </span>
+            <div className='social-media-links'>
+                <FontAwesomeIcon className='social-media-icons' icon={faGithub} />
+                <FontAwesomeIcon className='social-media-icons' icon={faLinkedin} />
+                <FontAwesomeIcon className='social-media-icons' icon={faSquareInstagram} />
             </div>
 
-            <div>Download Resume</div>
+            <div className='profile-description'>
+                <p>
+                    I&apos;m a skilled frontend, web, and mobile developer looking for junior developer roles. I&apos;m open to different opportunities that match my skills. I love learning new things and trying out fresh ideas. My goal is to keep growing and delivering great work with my passion for innovation.
+                </p>
+            </div>
+
+            <div className='link-btn'>
+                <button>Download Resume</button>
+                <button>Contact Me</button>
+            </div>
 
         </div>
     );
