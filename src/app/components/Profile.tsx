@@ -1,21 +1,28 @@
 import React from 'react';
+import '../styles/Profile.css';
+
+
 
 const Profile: React.FC = () => {
     return (
-        <div>
-            <h1>Profile</h1>
+        <div className='profile-section'>
+            <h1>Karan Patel</h1>
+            <h3>Web Development</h3>
+
             <div>
-                <h2>Personal Information</h2>
-                {/* Add your profile information here */}
+                <span>
+                    Github
+                </span>
+                <span>
+                    Linkedln
+                </span>
+                <span>
+                    Instagram
+                </span>
             </div>
-            <div>
-                <h2>Skills</h2>
-                {/* Add your skills information here */}
-            </div>
-            <div>
-                <h2>Experience</h2>
-                {/* Add your experience information here */}
-            </div>
+
+            <div>Download Resume</div>
+
         </div>
     );
 };

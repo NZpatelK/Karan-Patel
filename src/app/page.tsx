@@ -2,6 +2,10 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect } from "react";
+import Profile from "./components/Profile";
+import { Content } from "next/font/google";
+import Contents from "./components/Contents";
+import AboutMe from "./components/AboutMe";
 
 
 export default function Home() {
@@ -100,7 +104,9 @@ export default function Home() {
 
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
-            <h1 style={{ color: "#000" }}>Karan</h1>
+            {/* <Profile/> */}
+            {/* <Contents/> */}
+            <AboutMe />
           </div>
 
           {/* {renderPages()} */}
