@@ -9,6 +9,7 @@ import AboutMe from "./components/AboutMe";
 import Skills from "./components/Skills";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
+import ContactUs from "./components/ContactUs";
 
 
 export default function Home() {
@@ -112,7 +113,8 @@ export default function Home() {
             {/* <AboutMe /> */}
             {/* <Skills /> */}
             {/* <Services/> */}
-            <Projects/>
+            {/* <Projects/> */}
+            <ContactUs/>
           </div>
 
           {/* {renderPages()} */}
