@@ -1,5 +1,5 @@
 :root {
-  --bg-color: #081b29;
+  --bg-color: radial-gradient(circle at top right, rgb(9,23,119) 0%, rgb(9,23,119) 48%,rgb(7,28,149) 48%, rgb(7,28,149) 53%,rgb(5,35,178) 53%, rgb(5,35,178) 56%,rgb(2,42,208) 56%, rgb(2,42,208) 69%,rgb(0,51,237) 69%, rgb(0,51,237) 100%);;
   --main-color: #00abf0;
   --text-color: #333;
   --second-text-color: #555;

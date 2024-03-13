@@ -2,9 +2,33 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect } from "react";
+import Profile from "./components/Profile";
+import { Content } from "next/font/google";
+import Contents from "./components/Contents";
+import AboutMe from "./components/AboutMe";
+import Skills from "./components/Skills";
+import Services from "./components/Services";
+import Projects from "./components/Projects";
+import ContactUs from "./components/ContactUs";
 
 
 export default function Home() {
+
+  // const pageSection = [
+  //   <Contents key="contents" />,
+  //   <AboutMe key="aboutMe" />,
+  //   <Skills key="skills" />,
+  //   <Services key="services" />,
+  //   <Projects key="projects" />,
+  //   <ContactUs key="contactUs" />
+  // ];
+
+  const pageSection = [
+    {frontPage: <Contents key="contents" />, backPage: <AboutMe key="aboutMe" />},
+    {frontPage: <Skills key="skills" />, backPage: <Services key="services" />},
+    {frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" />}
+
+  ]
 
   const handleTurnPage = (page: any) => {
 
@@ -53,6 +77,8 @@ export default function Home() {
       }, 2800);
     }
 
+    console.log("total page: ", totalPage);
+
     pages.forEach((_, index) => {
       setTimeout(() => {
         reversePage();
@@ -66,6 +92,29 @@ export default function Home() {
     });
   }, []);
 
+  // const numPages = 7; // Number of pages
+
+  // const renderPages = () => {
+  //   const pages = [];
+  //   for (let i = 0; i < numPages; i++) {
+  //     pages.push(
+  //       <div
+  //         key={`turn-${i + 2}`}
+  //         className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}
+  //         id={`turn-${i + 2}`}
+  //       >
+  //         <div className={styles["page-front"]}>
+  //           <h1></h1>
+  //         </div>
+  //         <div className={styles["page-back"]}>
+  //           <h1>World</h1>
+  //         </div>
+  //       </div>
+  //     );
+  //   }
+  //   return pages;
+  // };
+
 
   return (
     <main>
@@ -75,44 +124,25 @@ export default function Home() {
 
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
-            <div className={styles["profile-page"]}>
-              <h1 style={{ color: "#000" }}>Hsssello</h1>
-            </div>
+            <Profile/>
           </div>
 
-          {Array.from({ length: 10 }).map((_, index) => (
-            <div
-              key={`turn-${index}`}
-              className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}
-              id={`turn-${index}`}>
 
-              {/* Front page */}
-
-              <div className={styles["page-front"]}>
-                <div className={styles["profile-page"]}>
-                  <h1 style={{ color: "#000" }}>page{index}</h1>
+          {pageSection.map((page, index) => {
+            return(
+              <div
+                key={`turn-${index + 2}`}
+                className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}
+                id={`turn-${index + 2}`}>
+                <div className={styles["page-front"]}>
+                  {page.frontPage}
                 </div>
-                <span className={styles["number-page"]} style={{ color: "#000", fontSize: "10px" }}>{index}</span>
-                <span className={styles["nextprev-btn"]} data-page={`turn-${index}`} onClick={(event) => handleTurnPage(`turn-${index}`)}>
-                  next
-                </span>
-
-                {/* <span className={[styles["nextprev-btn"], styles["back"]].join(" ")} data-page="turn-2" onClick={(event) => handleTurnPage("turn-1")}>
-                  next
-                </span> */}
+                <div className={styles["page-back"]}>
+                  {page.backPage}
+                </div>
               </div>
-
-              {/* Back page */}
-
-              <div className={styles["page-back"]}>
-                <h1 style={{ color: "#000" }}>page{index+1}</h1>
-                <span className={styles["number-page"]} style={{ color: "#000", fontSize: "10px" }}>{index}</span>
-                {/* <span className={[styles["nextprev-btn"], styles["back"]].join(" ")} data-page="turn-2">
-                  next
-                </span> */}
-              </div>
-            </div>
-          ))}
+            )
+          })}
 
         </div>
       </div>
