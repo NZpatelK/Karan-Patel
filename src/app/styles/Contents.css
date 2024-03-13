@@ -3,10 +3,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    justify-content: start;
+    margin: 20px 0;
     width: 100%;
     height: 100%;
+}
 
+.list-contents{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+
+.list-contents li{
+    margin: 15px 0;
+    padding: 20px;
+    padding-right: 30px !important;
+    width: 100%;
+    height: 100%;
+    border:3px solid var(--main-color);
+    color: var(--main-color);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
 }
