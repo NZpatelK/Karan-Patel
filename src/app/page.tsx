@@ -14,6 +14,22 @@ import ContactUs from "./components/ContactUs";
 
 export default function Home() {
 
+  // const pageSection = [
+  //   <Contents key="contents" />,
+  //   <AboutMe key="aboutMe" />,
+  //   <Skills key="skills" />,
+  //   <Services key="services" />,
+  //   <Projects key="projects" />,
+  //   <ContactUs key="contactUs" />
+  // ];
+
+  const pageSection = [
+    {frontPage: <Contents key="contents" />, backPage: <AboutMe key="aboutMe" />},
+    {frontPage: <Skills key="skills" />, backPage: <Services key="services" />},
+    {frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" />}
+
+  ]
+
   const handleTurnPage = (page: any) => {
 
     const pageId = document.getElementById(page);
@@ -108,32 +124,26 @@ export default function Home() {
 
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
-            {/* <Profile/> */}
-            {/* <Contents/> */}
-            {/* <AboutMe /> */}
-            {/* <Skills /> */}
-            {/* <Services/> */}
-            {/* <Projects/> */}
-            <ContactUs/>
+            <Profile/>
           </div>
 
-          {/* {renderPages()} */}
 
-          {/* Loop to render the rest of the pages */}
-          {Array.from({ length: 3 }).map((_, index) => (
-            console.log(index),
-            <div
-              key={`turn-${index + 2}`}
-              className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}
-              id={`turn-${index + 2}`}>
-              <div className={styles["page-front"]}>
-                <h1></h1>
+          {pageSection.map((page, index) => {
+            return(
+              <div
+                key={`turn-${index + 2}`}
+                className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}
+                id={`turn-${index + 2}`}>
+                <div className={styles["page-front"]}>
+                  {page.frontPage}
+                </div>
+                <div className={styles["page-back"]}>
+                  {page.backPage}
+                </div>
               </div>
-              <div className={styles["page-back"]}>
-                <h1>World</h1>
-              </div>
-            </div>
-          ))}
+            )
+          })}
+
         </div>
       </div>
     </main>
