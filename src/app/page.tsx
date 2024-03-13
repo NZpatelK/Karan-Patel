@@ -7,6 +7,7 @@ import { Content } from "next/font/google";
 import Contents from "./components/Contents";
 import AboutMe from "./components/AboutMe";
 import Skills from "./components/Skills";
+import Services from "./components/Services";
 
 
 export default function Home() {
@@ -108,7 +109,8 @@ export default function Home() {
             {/* <Profile/> */}
             {/* <Contents/> */}
             {/* <AboutMe /> */}
-            <Skills />
+            {/* <Skills /> */}
+            <Services/>
           </div>
 
           {/* {renderPages()} */}
