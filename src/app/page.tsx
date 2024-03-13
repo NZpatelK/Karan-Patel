@@ -6,6 +6,7 @@ import Profile from "./components/Profile";
 import { Content } from "next/font/google";
 import Contents from "./components/Contents";
 import AboutMe from "./components/AboutMe";
+import Skills from "./components/Skills";
 
 
 export default function Home() {
@@ -106,7 +107,8 @@ export default function Home() {
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
             {/* <Profile/> */}
             {/* <Contents/> */}
-            <AboutMe />
+            {/* <AboutMe /> */}
+            <Skills />
           </div>
 
           {/* {renderPages()} */}
