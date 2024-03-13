@@ -8,6 +8,7 @@ import Contents from "./components/Contents";
 import AboutMe from "./components/AboutMe";
 import Skills from "./components/Skills";
 import Services from "./components/Services";
+import Projects from "./components/Projects";
 
 
 export default function Home() {
@@ -110,7 +111,8 @@ export default function Home() {
             {/* <Contents/> */}
             {/* <AboutMe /> */}
             {/* <Skills /> */}
-            <Services/>
+            {/* <Services/> */}
+            <Projects/>
           </div>
 
           {/* {renderPages()} */}
