@@ -50,7 +50,7 @@ export default function Home() {
 
       setTimeout(() => {
         coverRight.style.zIndex = "-1";
-      }, 2000);
+      }, 2800);
     }
 
     pages.forEach((_, index) => {
