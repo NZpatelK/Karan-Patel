@@ -25,6 +25,7 @@
     padding-right: 30px !important;
     width: 100%;
     height: 100%;
+    font-weight: 600;
     border:3px solid var(--main-color);
     color: var(--main-color);
     border-radius: 5px;
@@ -32,4 +33,10 @@
     align-items: center;
     justify-content: space-evenly;
     cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.list-contents li:hover{
+    background-color: var(--main-color);
+    color: #fff;
 }
