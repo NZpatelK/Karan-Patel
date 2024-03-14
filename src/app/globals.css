@@ -1,5 +1,6 @@
 :root {
-  --bg-color: radial-gradient(circle at top right, rgb(9,23,119) 0%, rgb(9,23,119) 48%,rgb(7,28,149) 48%, rgb(7,28,149) 53%,rgb(5,35,178) 53%, rgb(5,35,178) 56%,rgb(2,42,208) 56%, rgb(2,42,208) 69%,rgb(0,51,237) 69%, rgb(0,51,237) 100%);;
+  --bg-color: radial-gradient(circle at top right, rgb(9, 23, 119) 0%, rgb(9, 23, 119) 48%, rgb(7, 28, 149) 48%, rgb(7, 28, 149) 53%, rgb(5, 35, 178) 53%, rgb(5, 35, 178) 56%, rgb(2, 42, 208) 56%, rgb(2, 42, 208) 69%, rgb(0, 51, 237) 69%, rgb(0, 51, 237) 100%);
+  ;
   --main-color: #00abf0;
   --text-color: #333;
   --second-text-color: #555;
@@ -7,7 +8,7 @@
   --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
   --pages-color: linear-gradient(90deg, #fff, #ddd);
   --border: .125rem solid #00abf0;
-  --box-shadow: 0 0 .6rem rgba(0,0,0,.2);
+  --box-shadow: 0 0 .6rem rgba(0, 0, 0, .2);
 }
 
 
@@ -37,6 +38,24 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.page-btn {
+  position: absolute;
+  bottom: -20px;
+  right: 10px;
+  font-size: 25px;
+  margin: 20px 0;
+  padding: 10px 20px;
+  color: #4d4d4d;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.prev.page-btn {
+  left: 10px;
+  transform: rotateY(180deg);
 }
 
 @media (prefers-color-scheme: dark) {

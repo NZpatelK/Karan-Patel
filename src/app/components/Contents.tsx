@@ -34,7 +34,7 @@ const Contents: React.FC<ContentsProps> = ({ selectPage, turnPage, id }) => {
                     </li>
                 ))}
             </ol>
-            <FontAwesomeIcon className='next-page-btn' icon={faCaretRight} onClick={(e) => { e.preventDefault() ,turnPage(id)}}/>
+            <FontAwesomeIcon className='next page-btn' icon={faCaretRight} onClick={(e) => { e.preventDefault() ,turnPage(id)}}/>
         </div>
     );
 };
