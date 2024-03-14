@@ -18,7 +18,12 @@ export default function Home() {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
     pages.forEach((page:any, index: number) => {
       setTimeout(() => {
-     if(index <= pageId) {page.classList.add(styles.turn);}
+     if(index <= pageId) {
+      page.classList.add(styles.turn);
+      setTimeout(() => {
+        page.style.zIndex = (20 + 1).toString();
+      }, 500);
+    }
       },(index + 1) * 200 + 100);
     })
 
@@ -46,7 +51,7 @@ export default function Home() {
   }
   
   const pageSection = [
-    {frontPage: <Contents key="contents" selectPage={handleSelectContent}/>, backPage: <AboutMe key="aboutMe" />},
+    {frontPage: <Contents key="contents" selectPage={handleSelectContent} nextPage={handleSelectContent}/>, backPage: <AboutMe key="aboutMe" />},
     {frontPage: <Skills key="skills" />, backPage: <Services key="services" />},
     {frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" />}
   ]
