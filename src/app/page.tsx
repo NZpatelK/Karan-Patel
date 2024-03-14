@@ -14,23 +14,22 @@ import ContactUs from "./components/ContactUs";
 
 export default function Home() {
 
-  // const pageSection = [
-  //   <Contents key="contents" />,
-  //   <AboutMe key="aboutMe" />,
-  //   <Skills key="skills" />,
-  //   <Services key="services" />,
-  //   <Projects key="projects" />,
-  //   <ContactUs key="contactUs" />
-  // ];
+  const handleSelectContent = ((pageId: number) => {
+    const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
+    pages.forEach((page: any, index: number) => {
+      setTimeout(() => {
+        if (index <= pageId) {
+          page.classList.add(styles.turn);
+          setTimeout(() => {
+            page.style.zIndex = (20 + 1).toString();
+          }, 500);
+        }
+      }, (index + 1) * 200 + 100);
+    })
 
-  const pageSection = [
-    {frontPage: <Contents key="contents" />, backPage: <AboutMe key="aboutMe" />},
-    {frontPage: <Skills key="skills" />, backPage: <Services key="services" />},
-    {frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" />}
+  })
 
-  ]
-
-  const handleTurnPage = (page: any) => {
+  const handleTurnPage = (page: string) => {
 
     const pageId = document.getElementById(page);
 
@@ -51,8 +50,14 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {
+  const pageSection = [
+    { frontPage: <Contents key="contents" id="turn-1" selectPage={handleSelectContent} turnPage={handleTurnPage}  />, backPage: <AboutMe key="aboutMe" /> },
+    { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
+    { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
+  ]
 
+
+  useEffect(() => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
     const totalPage = pages.length;
     let currentPage = 0;
@@ -92,29 +97,6 @@ export default function Home() {
     });
   }, []);
 
-  // const numPages = 7; // Number of pages
-
-  // const renderPages = () => {
-  //   const pages = [];
-  //   for (let i = 0; i < numPages; i++) {
-  //     pages.push(
-  //       <div
-  //         key={`turn-${i + 2}`}
-  //         className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}
-  //         id={`turn-${i + 2}`}
-  //       >
-  //         <div className={styles["page-front"]}>
-  //           <h1></h1>
-  //         </div>
-  //         <div className={styles["page-back"]}>
-  //           <h1>World</h1>
-  //         </div>
-  //       </div>
-  //     );
-  //   }
-  //   return pages;
-  // };
-
 
   return (
     <main>
@@ -124,19 +106,19 @@ export default function Home() {
 
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
-            <Profile/>
+            <Profile />
           </div>
 
 
           {pageSection.map((page, index) => {
-            return(
+            return (
               <div
-                key={`turn-${index + 2}`}
-                className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}
-                id={`turn-${index + 2}`}>
+                key={index + 1}
+                id={`turn-${index + 1}`}
+                className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}>
                 <div className={styles["page-front"]}>
                   {page.frontPage}
-                </div>
+                </div>``
                 <div className={styles["page-back"]}>
                   {page.backPage}
                 </div>
