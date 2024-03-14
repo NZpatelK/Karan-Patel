@@ -9,7 +9,6 @@ import Services from "./components/Services";
 import Projects from "./components/Projects";
 import ContactUs from "./components/ContactUs";
 
-
 export default function Home() {
 
   const handleSelectContent = ((pageId: number) => {
