@@ -5,10 +5,11 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 type ContentsProps = {
     selectPage: (value: number) => void;
-    nextPage: (value: number) => void;
+    turnPage: (value: string) => void;
+    id: string;
 };
 
-const Contents: React.FC<ContentsProps> = ({ selectPage, nextPage }) => {
+const Contents: React.FC<ContentsProps> = ({ selectPage, turnPage, id }) => {
     const sections = [
         { title: 'Introduction', id: 'introduction', page: 1, pageId: -1 },
         { title: 'About Me', id: 'about-me', page: 3, pageId: 0 },
@@ -23,7 +24,7 @@ const Contents: React.FC<ContentsProps> = ({ selectPage, nextPage }) => {
             <h2>Table of Contents</h2>
             <ol className='list-contents'>
                 {sections.map((section) => (
-                    <li key={section.id} style={{ display: 'flex', justifyContent: 'space-between' }} onClick={() => selectPage(section.pageId)}>
+                    <li key={section.id} style={{ display: 'flex', justifyContent: 'space-between' }} onClick={(e) => { e.preventDefault() ,selectPage(section.pageId)}}>
                         <div style={{ marginRight: '10px' }}>
                             <a href={`#${section.id}`}>{section.title}</a>
                         </div>
@@ -33,7 +34,7 @@ const Contents: React.FC<ContentsProps> = ({ selectPage, nextPage }) => {
                     </li>
                 ))}
             </ol>
-            <FontAwesomeIcon className='next-page-btn' icon={faCaretRight} onClick={() => {nextPage(0)}}/>
+            <FontAwesomeIcon className='next-page-btn' icon={faCaretRight} onClick={(e) => { e.preventDefault() ,turnPage(id)}}/>
         </div>
     );
 };

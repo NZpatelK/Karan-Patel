@@ -16,20 +16,20 @@ export default function Home() {
 
   const handleSelectContent = ((pageId: number) => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
-    pages.forEach((page:any, index: number) => {
+    pages.forEach((page: any, index: number) => {
       setTimeout(() => {
-     if(index <= pageId) {
-      page.classList.add(styles.turn);
-      setTimeout(() => {
-        page.style.zIndex = (20 + 1).toString();
-      }, 500);
-    }
-      },(index + 1) * 200 + 100);
+        if (index <= pageId) {
+          page.classList.add(styles.turn);
+          setTimeout(() => {
+            page.style.zIndex = (20 + 1).toString();
+          }, 500);
+        }
+      }, (index + 1) * 200 + 100);
     })
 
   })
 
-  const handleTurnPage = (page: any) => {
+  const handleTurnPage = (page: string) => {
 
     const pageId = document.getElementById(page);
 
@@ -49,16 +49,12 @@ export default function Home() {
       }, 500);
     }
   }
-  
+
   const pageSection = [
-    {frontPage: <Contents key="contents" selectPage={handleSelectContent} nextPage={handleSelectContent}/>, backPage: <AboutMe key="aboutMe" />},
-    {frontPage: <Skills key="skills" />, backPage: <Services key="services" />},
-    {frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" />}
+    { frontPage: <Contents key="contents" id="turn-1" selectPage={handleSelectContent} turnPage={handleTurnPage}  />, backPage: <AboutMe key="aboutMe" /> },
+    { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
+    { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
-
-
-
-
 
 
   useEffect(() => {
@@ -110,18 +106,19 @@ export default function Home() {
 
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
-            <Profile/>
+            <Profile />
           </div>
 
 
           {pageSection.map((page, index) => {
-            return(
+            return (
               <div
-                key={`turn-${index + 2}`}
+                key={index + 1}
+                id={`turn-${index + 1}`}
                 className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}>
                 <div className={styles["page-front"]}>
                   {page.frontPage}
-                </div>
+                </div>``
                 <div className={styles["page-back"]}>
                   {page.backPage}
                 </div>
