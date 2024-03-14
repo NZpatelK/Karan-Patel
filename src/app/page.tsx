@@ -1,9 +1,7 @@
 'use client';
-import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect } from "react";
 import Profile from "./components/Profile";
-import { Content } from "next/font/google";
 import Contents from "./components/Contents";
 import AboutMe from "./components/AboutMe";
 import Skills from "./components/Skills";
@@ -51,7 +49,7 @@ export default function Home() {
   }
 
   const pageSection = [
-    { frontPage: <Contents key="contents" id="turn-1" selectPage={handleSelectContent} turnPage={handleTurnPage}  />, backPage: <AboutMe key="aboutMe" /> },
+    { frontPage: <Contents key="contents" id="turn-1" selectPage={handleSelectContent} turnPage={handleTurnPage} />, backPage: <AboutMe key="aboutMe" id="turn-1" turnPage={handleTurnPage} /> },
     { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
