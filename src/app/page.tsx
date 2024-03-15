@@ -9,7 +9,6 @@ import Services from "./components/Services";
 import Projects from "./components/Projects";
 import ContactUs from "./components/ContactUs";
 
-
 export default function Home() {
 
   const handleSelectContent = ((pageId: number) => {
@@ -50,7 +49,7 @@ export default function Home() {
 
   const pageSection = [
     { frontPage: <Contents key="contents" id="turn-1" selectPage={handleSelectContent} turnPage={handleTurnPage} />, backPage: <AboutMe key="aboutMe" id="turn-1" turnPage={handleTurnPage} /> },
-    { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
+    { frontPage: <Skills key="skills" id="turn-2" turnPage={handleTurnPage} />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
 
