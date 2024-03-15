@@ -1,6 +1,6 @@
 'use client';
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Profile from "./components/Profile";
 import Contents from "./components/Contents";
 import AboutMe from "./components/AboutMe";

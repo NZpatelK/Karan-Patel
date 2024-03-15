@@ -1,8 +1,5 @@
 import React from 'react';
 import '../styles/AboutMe.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
-
 
 const AboutMe: React.FC= () => {
     return (

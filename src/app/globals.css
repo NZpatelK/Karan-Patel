@@ -19,6 +19,7 @@
   text-decoration: none;
   border: none;
   outline: none;
+  user-select: none;
 }
 
 html,
