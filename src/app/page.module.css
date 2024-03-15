@@ -1,3 +1,14 @@
+.apologize{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  width: 80%;
+  text-align: justify;
+}
+
+
 .wrapper{
   position: relative;
   width: 66rem;
