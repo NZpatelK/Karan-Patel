@@ -1,9 +1,56 @@
 .services-section{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width: 100%;
     height: 100%;
     color: #000;
+}
+
+.serviceContainer{
+  margin-top: 50px;
+}
+
+.serviceContainer p {
+    font-size: 1em;
+    font-weight: 400;
+    margin: 10px 40px;
+    text-align: justify;
+}
+
+.serviceGroup{
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+    width: 100%;
+    color: #000;
+}
+
+.serviceType{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 135px;
+    height: 135px;
+    color: #000;
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+
+.serviceType .serviceIcon{
+   width: 50px;
+   height: 50px; 
+}
+
+.serviceType h2{
+    font-size: 1em;
+    font-weight: 600;
+    margin: 10px 15px;
+    text-align: center;
 }
