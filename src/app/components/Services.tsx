@@ -7,12 +7,8 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
-type ServiceProps = {
-    turnPage: (value: string) => void;
-    id: string;
-};
 
-const Services: React.FC<ServiceProps> = ({id, turnPage }) => {
+const Services: React.FC = () => {
     return (
         <div className='services-section'>
             <h1>Service</h1>
@@ -38,9 +34,6 @@ const Services: React.FC<ServiceProps> = ({id, turnPage }) => {
                     I am also a UI/UX designer with a passion for creating and designing user interfaces and user experiences.
                 </p>
             </div>
-
-            <FontAwesomeIcon className='prev page-btn' icon={faCaretRight} onClick={(e) => { e.preventDefault(), turnPage(id) }} />
-
         </div>
     );
 };

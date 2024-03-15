@@ -3,14 +3,9 @@ import '../styles/Projects.css';
 import latestProject from '../assets/ecomm-project.png';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
-type ProjectsProps = {
-    turnPage: (value: string) => void;
-    id: string;
-};
-
-const Projects: React.FC<ProjectsProps> = ({id, turnPage}) => {
+const Projects: React.FC= () => {
 
 
     return (
@@ -26,7 +21,6 @@ const Projects: React.FC<ProjectsProps> = ({id, turnPage}) => {
                 <p>Project Description</p>
             </div>
             <button>View All Projects</button>
-            <FontAwesomeIcon className='next page-btn' icon={faCaretRight} onClick={(e) => { e.preventDefault(), turnPage(id) }} />
         </div>
     );
 };

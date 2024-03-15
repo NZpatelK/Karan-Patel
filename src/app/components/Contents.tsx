@@ -1,15 +1,11 @@
 import React from 'react';
 import '../styles/Contents.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 type ContentsProps = {
     selectPage: (value: number) => void;
-    turnPage: (value: string) => void;
-    id: string;
 };
 
-const Contents: React.FC<ContentsProps> = ({ selectPage, turnPage, id }) => {
+const Contents: React.FC<ContentsProps> = ({ selectPage}) => {
     const sections = [
         { title: 'Introduction', id: 'introduction', page: 1, pageId: -1 },
         { title: 'About Me', id: 'about-me', page: 3, pageId: 0 },
@@ -34,7 +30,6 @@ const Contents: React.FC<ContentsProps> = ({ selectPage, turnPage, id }) => {
                     </li>
                 ))}
             </ol>
-            <FontAwesomeIcon className='next page-btn' icon={faCaretRight} onClick={(e) => { e.preventDefault() ,turnPage(id)}}/>
         </div>
     );
 };
