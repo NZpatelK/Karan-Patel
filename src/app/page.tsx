@@ -19,29 +19,19 @@ export default function Home() {
     height: typeof window !== 'undefined' ? window.innerHeight : 0
   });
 
-  const [isBigScreen, setIsBigScreen] = useState(window.innerWidth >= 1180 && window.innerHeight >= 820 ? true : false);
+  const [isBigScreen, setIsBigScreen] = useState(true);
 
-  const handleResize = () => {
-    // setWindowSize({
-    //   width: window.innerWidth,
-    //   height: window.innerHeight
-    // });
-
-    if (window.innerWidth >= 1180 && window.innerHeight >= 820) {
-      setIsBigScreen(true);
-    } else {
-      setIsBigScreen(false);
-    }
-  };
 
   useEffect(() => {
-    // Add event listener to window resize
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', handleResize);
+    const checkScreenSize = () => {
+      setIsBigScreen(window.innerWidth >= 1180 && window.innerHeight >= 820);
     };
+
+    checkScreenSize(); // Check initial screen size
+
+    window.addEventListener('resize', checkScreenSize); // Update on resize
+
+    return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
   }, []);
 
   const handleSelectContent = ((pageId: number) => {
