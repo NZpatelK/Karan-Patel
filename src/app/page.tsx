@@ -50,7 +50,7 @@ export default function Home() {
   const pageSection = [
     { frontPage: <Contents key="contents" id="turn-1" selectPage={handleSelectContent} turnPage={handleTurnPage} />, backPage: <AboutMe key="aboutMe" id="turn-1" turnPage={handleTurnPage} /> },
     { frontPage: <Skills key="skills" id="turn-2" turnPage={handleTurnPage} />, backPage: <Services key="services"  id="turn-2" turnPage={handleTurnPage}/> },
-    { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
+    { frontPage: <Projects key="projects" id="turn-3" turnPage={handleTurnPage} />, backPage: <ContactUs key="contactUs" /> }
   ]
 
 
