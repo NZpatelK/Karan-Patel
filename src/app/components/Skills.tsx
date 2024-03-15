@@ -14,15 +14,9 @@ import NextLogo from '../assets/NextLogo';
 import SalesforceLogo from '../assets/SaleforceLogo';
 import JavaLogo from '../assets/JavaLogo';
 import PythonSvg from '../assets/Python';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type SkillProps = {
-    turnPage: (value: string) => void;
-    id: string;
-};
 
-const Skills: React.FC<SkillProps> = ({id, turnPage }) => {
+const Skills: React.FC = () => {
 
     const frontEnd = [
         { name: 'React', logo: <ReactLogo key={0} /> },
@@ -82,7 +76,6 @@ const Skills: React.FC<SkillProps> = ({id, turnPage }) => {
                     </div>
                 ))}
             </div>
-            <FontAwesomeIcon className='next page-btn' icon={faCaretRight} onClick={(e) => { e.preventDefault(), turnPage(id) }} />
         </div>
     );
 };

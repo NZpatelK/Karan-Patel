@@ -1,6 +1,6 @@
 'use client';
 import styles from "./page.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Profile from "./components/Profile";
 import Contents from "./components/Contents";
 import AboutMe from "./components/AboutMe";
@@ -8,6 +8,9 @@ import Skills from "./components/Skills";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
 import ContactUs from "./components/ContactUs";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Home() {
 
@@ -26,7 +29,7 @@ export default function Home() {
 
   })
 
-  const handleTurnPage = (page: string) => {
+  const handleTurnPage = (page: string, index: number) => {
 
     const pageId = document.getElementById(page);
 
@@ -34,23 +37,23 @@ export default function Home() {
       pageId?.classList.remove(styles.turn);
       setTimeout(() => {
         if (pageId) {
-          pageId.style.zIndex = (20 - 1).toString();
+          pageId.style.zIndex = (20 - index).toString();
         }
       }, 500);
     } else {
       pageId?.classList.add(styles.turn);
       setTimeout(() => {
         if (pageId) {
-          pageId.style.zIndex = (20 + 1).toString();
+          pageId.style.zIndex = (20 + index).toString();
         }
       }, 500);
     }
   }
 
   const pageSection = [
-    { frontPage: <Contents key="contents" id="turn-1" selectPage={handleSelectContent} turnPage={handleTurnPage} />, backPage: <AboutMe key="aboutMe" id="turn-1" turnPage={handleTurnPage} /> },
-    { frontPage: <Skills key="skills" id="turn-2" turnPage={handleTurnPage} />, backPage: <Services key="services"  id="turn-2" turnPage={handleTurnPage}/> },
-    { frontPage: <Projects key="projects" id="turn-3" turnPage={handleTurnPage} />, backPage: <ContactUs key="contactUs" /> }
+    { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
+    { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
+    { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
 
 
@@ -108,16 +111,19 @@ export default function Home() {
 
 
           {pageSection.map((page, index) => {
+            const pageId = `turn-${index + 1}`;
             return (
               <div
                 key={index + 1}
-                id={`turn-${index + 1}`}
+                id={pageId}
                 className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}>
                 <div className={styles["page-front"]}>
                   {page.frontPage}
-                </div>``
+                  <FontAwesomeIcon className='next page-btn' icon={faCaretRight} onClick={() => {handleTurnPage(pageId, index)}}  />
+                </div>
                 <div className={styles["page-back"]}>
                   {page.backPage}
+                  <FontAwesomeIcon className='prev page-btn' icon={faCaretRight} onClick={() => {handleTurnPage(pageId, index + 1 )}} />
                 </div>
               </div>
             )

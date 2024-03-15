@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/ContactUs.css';
 
+
+
 const ContactUs: React.FC = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -26,7 +28,7 @@ const ContactUs: React.FC = () => {
     return (
         <div className='temp-unavaliable'>
             <div className='msg'>
-                <h1>Contact Us</h1>
+                <h1>Contact Us Form</h1>
                 <h1>Temporarily Unavailable</h1>
             </div>
             <div className='contact-us-section'>
@@ -55,7 +57,7 @@ const ContactUs: React.FC = () => {
                         onChange={handleChange}
                         required
                     ></textarea>
-                    <button type="submit">Send Message</button>
+                    <button disabled type="submit">Send Message</button>
                 </form>
             </div>
         </div>

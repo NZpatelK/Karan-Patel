@@ -3,12 +3,8 @@ import '../styles/AboutMe.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
-type AboutMeProps = {
-    turnPage: (value: string) => void;
-    id: string;
-};
 
-const AboutMe: React.FC<AboutMeProps> = ({ id, turnPage }) => {
+const AboutMe: React.FC= () => {
     return (
         <div className='about-me-section'>
             <h2>About Me</h2>
@@ -20,7 +16,6 @@ const AboutMe: React.FC<AboutMeProps> = ({ id, turnPage }) => {
                 With an open mind and a hunger for learning,
                 I thrive on new challenges and consider myself a fast learner, always eager to grow personally and professionally.
             </p>
-            <FontAwesomeIcon className='prev page-btn' icon={faCaretRight} onClick={(e) => { e.preventDefault(), turnPage(id) }} />
         </div>
     );
 };
