@@ -4,9 +4,6 @@ import webDev from '../assets/webDev.png';
 import mobileDev from '../assets/mobileDev.png';
 import uiDesigner from '../assets/uiDesign.png';
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
-
 
 const Services: React.FC = () => {
     return (

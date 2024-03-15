@@ -7,7 +7,6 @@ import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 const Projects: React.FC= () => {
 
-
     return (
         <div className='projects-section'>
             <h1>Projects</h1>
