@@ -1,6 +1,6 @@
 'use client';
 import styles from "./page.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Profile from "./components/Profile";
 import Contents from "./components/Contents";
 import AboutMe from "./components/AboutMe";
@@ -13,6 +13,36 @@ import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Home() {
+
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 0,
+    height: typeof window !== 'undefined' ? window.innerHeight : 0
+  });
+
+  const [isBigScreen, setIsBigScreen] = useState(window.innerWidth >= 1180 && window.innerHeight >= 820 ? true : false);
+
+  const handleResize = () => {
+    // setWindowSize({
+    //   width: window.innerWidth,
+    //   height: window.innerHeight
+    // });
+
+    if (window.innerWidth >= 1180 && window.innerHeight >= 820) {
+      setIsBigScreen(true);
+    } else {
+      setIsBigScreen(false);
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener to window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleSelectContent = ((pageId: number) => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
@@ -100,7 +130,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className={styles.wrapper}>
+      {isBigScreen ? <div className={styles.wrapper}>
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
         <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
 
@@ -119,18 +149,21 @@ export default function Home() {
                 className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}>
                 <div className={styles["page-front"]}>
                   {page.frontPage}
-                  <FontAwesomeIcon className='next page-btn' icon={faCaretRight} onClick={() => {handleTurnPage(pageId, index)}}  />
+                  <FontAwesomeIcon className='next page-btn' icon={faCaretRight} onClick={() => { handleTurnPage(pageId, index) }} />
                 </div>
                 <div className={styles["page-back"]}>
                   {page.backPage}
-                  <FontAwesomeIcon className='prev page-btn' icon={faCaretRight} onClick={() => {handleTurnPage(pageId, index + 1 )}} />
+                  <FontAwesomeIcon className='prev page-btn' icon={faCaretRight} onClick={() => { handleTurnPage(pageId, index + 1) }} />
                 </div>
               </div>
             )
           })}
 
         </div>
-      </div>
+      </div> :
+        <div className={styles.apologize}>
+          <h2>We apologize, but this website is currently unavailable on this device. It will be available soon for this device. At the moment, the device must have a screen size of 10 inches or larger to view it. This website is optimized for laptops and desktops.</h2>
+        </div>}
     </main>
   );
 }
