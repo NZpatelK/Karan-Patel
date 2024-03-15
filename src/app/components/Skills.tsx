@@ -14,43 +14,75 @@ import NextLogo from '../assets/NextLogo';
 import SalesforceLogo from '../assets/SaleforceLogo';
 import JavaLogo from '../assets/JavaLogo';
 import PythonSvg from '../assets/Python';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Skills: React.FC = () => {
-    const frontEnd = [<ReactLogo key={0}/>, <VueLogo key={1}/>, <HTML5Logo key={2}/>, <CSS3Logo key={3}/>, <JavaScriptLogo key={4}/>, <TypeScriptLogo key={5}/>, <NextLogo key={6}/>];
-    const backEnd_Database = [<NodejsLogo key={0}/>, <JSONLogo key={1}/>, <MongoDBLogo key={2}/>];
-    const uiDesign = [<FigmaLogo key={0}/>] 
-    const other = [<SalesforceLogo key={0}/>, <JavaLogo key={1}/>, <PythonSvg key={2}/>]
+type SkillProps = {
+    turnPage: (value: string) => void;
+    id: string;
+};
+
+const Skills: React.FC<SkillProps> = ({id, turnPage }) => {
+
+    const frontEnd = [
+        { name: 'React', logo: <ReactLogo key={0} /> },
+        { name: 'Vue', logo: <VueLogo key={1} /> },
+        { name: 'HTML5', logo: <HTML5Logo key={2} /> },
+        { name: 'CSS3', logo: <CSS3Logo key={3} /> },
+        { name: 'JavaScript', logo: <JavaScriptLogo key={4} /> },
+        { name: 'TypeScript', logo: <TypeScriptLogo key={5} /> },
+        { name: 'Next', logo: <NextLogo key={6} /> }];
+
+    const backEnd_Database = [
+        { name: 'Nodejs', logo: <NodejsLogo key={0} /> },
+        { name: 'JSON', logo: <JSONLogo key={1} /> },
+        { name: 'MongoDB', logo: <MongoDBLogo key={2} /> }];
+
+    const uiDesign = [
+        { name: 'Figma', logo: <FigmaLogo key={0} /> },
+        { name: 'Salesforce', logo: <SalesforceLogo key={0} /> },
+        { name: 'Java', logo: <JavaLogo key={1} /> },
+        { name: 'Python', logo: <PythonSvg key={2} /> }];
+
+
+
+
+
 
     return (
         <div className='skill-section'>
-            <h2 style={{textAlign: "center"}}>Skills</h2>
-            <h2 style={{textAlign: "left"}}>Font-End Tools:</h2>
+            <h2 className='header'>Skills</h2>
+            <h2 className='subHeader'>Font-End Tools:</h2>
             <div className='logos-grids'>
-                {frontEnd.map((language, index) => (
-                    <div key={index} className='logoImg'>{language}</div>
+                {frontEnd.map((tool, index) => (
+                    <div key={index} className='logoImg'>
+                        <div>{tool.logo}</div>
+                        <h3>{tool.name}</h3>
+                    </div>
+
                 ))}
             </div>
 
-            <h2>Back-End / Database Tools</h2>
+            <h2 className='subHeader'>Back-End / Database Tools:</h2>
             <div className='logos-grids'>
                 {backEnd_Database.map((tool, index) => (
-                    <div key={index} className='logoImg'>{tool}</div>
+                    <div key={index} className='logoImg'>
+                        <div>{tool.logo}</div>
+                        <h3>{tool.name}</h3>
+                    </div>
                 ))}
             </div>
 
-            <h2>Ui Designer</h2>
+            <h2 className='subHeader'>Ui Designer/ Other tools:</h2>
             <div className='logos-grids'>
                 {uiDesign.map((tool, index) => (
-                    <div key={index} className='logoImg'>{tool}</div>
+                    <div key={index} className='logoImg'>
+                        <div>{tool.logo}</div>
+                        <h3>{tool.name}</h3>
+                    </div>
                 ))}
             </div>
-
-            <h2>Other Tool</h2>
-            <div className='logos-grids'>
-                {other.map((tool, index) => (
-                    <div key={index} className='logoImg'>{tool}</div>
-                ))}
-            </div>
+            <FontAwesomeIcon className='next page-btn' icon={faCaretRight} onClick={(e) => { e.preventDefault(), turnPage(id) }} />
         </div>
     );
 };
