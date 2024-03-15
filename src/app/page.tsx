@@ -162,7 +162,7 @@ export default function Home() {
         </div>
       </div> :
         <div className={styles.apologize}>
-          <h2>We apologize, but this website is currently unavailable on this device. It will be available soon for this device. At the moment, the device must have a screen size of 10 inches or larger to view it. This website is optimized for laptops and desktops.</h2>
+          <h2>We apologize, but this website is currently unavailable on this device. It will be available soon. The currently available device sizes are 10 inches or above, suitable for viewing on laptops and desktops.</h2>
         </div>}
     </main>
   );
