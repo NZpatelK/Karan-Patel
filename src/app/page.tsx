@@ -14,25 +14,20 @@ import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
 
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 0,
-    height: typeof window !== 'undefined' ? window.innerHeight : 0
-  });
-
-  const [isBigScreen, setIsBigScreen] = useState(true);
+  // const [isBigScreen, setIsBigScreen] = useState(true);
 
 
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsBigScreen(window.innerWidth >= 1180 && window.innerHeight >= 820);
-    };
+  // useEffect(() => {
+  //   const checkScreenSize = () => {
+  //     setIsBigScreen(window.innerWidth >= 1180 && window.innerHeight >= 820);
+  //   };
 
-    checkScreenSize(); // Check initial screen size
+  //   checkScreenSize(); // Check initial screen size
 
-    window.addEventListener('resize', checkScreenSize); // Update on resize
+  //   window.addEventListener('resize', checkScreenSize); // Update on resize
 
-    return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
-  }, []);
+  //   return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
+  // }, []);
 
   const handleSelectContent = ((pageId: number) => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
@@ -120,7 +115,7 @@ export default function Home() {
 
   return (
     <main>
-      {isBigScreen ? <div className={styles.wrapper}>
+      <div className={styles.wrapper}>
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
         <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
 
@@ -150,10 +145,7 @@ export default function Home() {
           })}
 
         </div>
-      </div> :
-        <div className={styles.apologize}>
-          <h2>We apologize, but this website is currently unavailable on this device. It will be available soon. The currently available device sizes are 10 inches or above, suitable for viewing on laptops and desktops.</h2>
-        </div>}
+      </div>
     </main>
   );
 }
