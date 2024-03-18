@@ -1,6 +1,6 @@
 'use client';
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Profile from "./components/Profile";
 import Contents from "./components/Contents";
 import AboutMe from "./components/AboutMe";
@@ -16,6 +16,8 @@ import MobileProfile1 from "./components/Mobile/M_Profile";
 export default function Home() {
 
   const [isMobile, setIsMobile] = useState(true);
+  const scrollInto = useRef(null)
+
 
 
   useEffect(() => {
@@ -23,6 +25,10 @@ export default function Home() {
       const screemSize = (window.innerWidth <= 880 || window.innerHeight <= 625)
       setIsMobile(screemSize);
     };
+    setTimeout(function () {
+      // Hide the address bar!
+      window.scrollTo(0, 1);
+    }, 0);
 
     checkScreenSize(); // Check initial screen size
 
@@ -72,7 +78,7 @@ export default function Home() {
     { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
-  
+
   const mobilePageSection = [
     { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
   ]
@@ -127,7 +133,7 @@ export default function Home() {
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
             {/* <Profile /> */}
-            <MobileProfile1/>
+            <MobileProfile1 />
           </div>
 
 
