@@ -10,6 +10,7 @@ import Projects from "./components/Projects";
 import ContactUs from "./components/ContactUs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import MobileProfile1 from "./components/Mobile/M_Profile";
 
 
 export default function Home() {
@@ -19,7 +20,8 @@ export default function Home() {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(!(window.innerWidth <= 880 && window.innerHeight <= 625));
+      const screemSize = (window.innerWidth <= 880 || window.innerHeight <= 625)
+      setIsMobile(screemSize);
     };
 
     checkScreenSize(); // Check initial screen size
@@ -65,12 +67,15 @@ export default function Home() {
     }
   }
 
-  const pageSection = [
+  const desktopPageSection = [
     { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
     { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
-
+  
+  const mobilePageSection = [
+    { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
+  ]
 
   useEffect(() => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
@@ -115,17 +120,18 @@ export default function Home() {
 
   return (
     <main>
-      {isMobile ? <div className={styles.wrapper}>
+      <div className={styles.wrapper}>
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
         <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
 
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
-            <Profile />
+            {/* <Profile /> */}
+            <MobileProfile1/>
           </div>
 
 
-          {pageSection.map((page, index) => {
+          {(isMobile ? mobilePageSection : desktopPageSection).map((page, index) => {
             const pageId = `turn-${index + 1}`;
             return (
               <div
@@ -145,8 +151,7 @@ export default function Home() {
           })}
 
         </div>
-      </div>: null
-}
+      </div>
     </main>
   );
 }
