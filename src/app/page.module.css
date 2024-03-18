@@ -16,6 +16,7 @@
   padding: 2rem;
   perspective: 250rem;
   animation: show-animate 2s forwards;
+  transition: all 1s ease;
 }
 
 @keyframes  show-animate {
@@ -134,4 +135,40 @@
 .nextprev-btn.back{
   left: 1.5rem;
   /* right: auto; */
+}
+
+@media screen and (max-width: 1180px), (max-height: 750px){
+
+  .wrapper{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: 0.5rem;
+    perspective: 250rem;
+    animation: show-animate 2s forwards;
+  }
+
+  .cover{ 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--cover-color);
+    box-shadow: var(--box-shadow);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    transform-origin: right;
+  }
+
+  .book .book-page{ 
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--pages-color);
+    box-shadow: 0 0 .6rem rgba(0,0,0,.1);
+    display: flex;
+    padding: 2rem;
+  }
+
 }

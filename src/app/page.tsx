@@ -1,6 +1,6 @@
 'use client';
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Profile from "./components/Profile";
 import Contents from "./components/Contents";
 import AboutMe from "./components/AboutMe";
@@ -10,22 +10,25 @@ import Projects from "./components/Projects";
 import ContactUs from "./components/ContactUs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import MobileProfile1 from "./components/Mobile/M_Profile";
 
 
 export default function Home() {
 
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 0,
-    height: typeof window !== 'undefined' ? window.innerHeight : 0
-  });
+  const [isMobile, setIsMobile] = useState(true);
+  const scrollInto = useRef(null)
 
-  const [isBigScreen, setIsBigScreen] = useState(true);
 
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsBigScreen(window.innerWidth >= 1180 && window.innerHeight >= 820);
+      const screemSize = (window.innerWidth <= 880 || window.innerHeight <= 625)
+      setIsMobile(screemSize);
     };
+    setTimeout(function () {
+      // Hide the address bar!
+      window.scrollTo(0, 1);
+    }, 0);
 
     checkScreenSize(); // Check initial screen size
 
@@ -70,12 +73,15 @@ export default function Home() {
     }
   }
 
-  const pageSection = [
+  const desktopPageSection = [
     { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
     { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
 
+  const mobilePageSection = [
+    { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
+  ]
 
   useEffect(() => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
@@ -120,17 +126,18 @@ export default function Home() {
 
   return (
     <main>
-      {isBigScreen ? <div className={styles.wrapper}>
+      <div className={styles.wrapper}>
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
         <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
 
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
-            <Profile />
+            {/* <Profile /> */}
+            <MobileProfile1 />
           </div>
 
 
-          {pageSection.map((page, index) => {
+          {(isMobile ? mobilePageSection : desktopPageSection).map((page, index) => {
             const pageId = `turn-${index + 1}`;
             return (
               <div
@@ -150,10 +157,7 @@ export default function Home() {
           })}
 
         </div>
-      </div> :
-        <div className={styles.apologize}>
-          <h2>We apologize, but this website is currently unavailable on this device. It will be available soon. The currently available device sizes are 10 inches or above, suitable for viewing on laptops and desktops.</h2>
-        </div>}
+      </div>
     </main>
   );
 }

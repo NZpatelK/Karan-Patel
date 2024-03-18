@@ -40,3 +40,27 @@
     background-color: var(--main-color);
     color: #fff;
 }
+
+@media screen and (max-width: 1180px), (max-height: 750px){
+
+    .list-contents{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: start;
+        padding: 0;
+        margin: 0;
+    }
+
+    .list-contents li{
+        margin: 5px;
+        padding: 0 10px;
+        width: 120px;
+        height: 50px;
+        font-weight: 600;
+        border: 2px solid var(--main-color);
+        font-size: 0.75rem;
+    }
+
+  
+  }
