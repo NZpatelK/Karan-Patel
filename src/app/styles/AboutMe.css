@@ -22,3 +22,29 @@
     margin-bottom: 20px;
     text-align: justify;
 }
+
+@media screen and (max-width: 880px),
+(max-height: 625px) {
+
+    .about-me-section{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+
+    .about-me-section h2{
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    
+
+    .about-me-section p{
+        font-size: 0.8em;
+        font-weight: 400;
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+
+}
