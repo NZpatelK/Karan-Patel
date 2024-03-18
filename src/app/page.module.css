@@ -16,6 +16,7 @@
   padding: 2rem;
   perspective: 250rem;
   animation: show-animate 2s forwards;
+  transition: all 1s ease;
 }
 
 @keyframes  show-animate {
@@ -136,7 +137,7 @@
   /* right: auto; */
 }
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1180px), (max-height: 750px){
 
   .wrapper{
     position: relative;

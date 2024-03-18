@@ -14,20 +14,20 @@ import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
 
-  // const [isBigScreen, setIsBigScreen] = useState(true);
+  const [isMobile, setIsMobile] = useState(true);
 
 
-  // useEffect(() => {
-  //   const checkScreenSize = () => {
-  //     setIsBigScreen(window.innerWidth >= 1180 && window.innerHeight >= 820);
-  //   };
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(!(window.innerWidth <= 880 && window.innerHeight <= 625));
+    };
 
-  //   checkScreenSize(); // Check initial screen size
+    checkScreenSize(); // Check initial screen size
 
-  //   window.addEventListener('resize', checkScreenSize); // Update on resize
+    window.addEventListener('resize', checkScreenSize); // Update on resize
 
-  //   return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
-  // }, []);
+    return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
+  }, []);
 
   const handleSelectContent = ((pageId: number) => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
@@ -115,7 +115,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className={styles.wrapper}>
+      {isMobile ? <div className={styles.wrapper}>
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
         <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
 
@@ -145,7 +145,8 @@ export default function Home() {
           })}
 
         </div>
-      </div>
+      </div>: null
+}
     </main>
   );
 }
