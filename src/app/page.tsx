@@ -15,26 +15,24 @@ import MobileProfile1 from "./components/Mobile/M_Profile";
 
 export default function Home() {
 
-  const [isMobile, setIsMobile] = useState(true);
-  const scrollInto = useRef(null)
+  // const [isMobile, setIsMobile] = useState(true);
 
 
 
   useEffect(() => {
-    const checkScreenSize = () => {
-      const screemSize = (window.innerWidth <= 880 || window.innerHeight <= 625)
-      setIsMobile(screemSize);
-    };
+    // const checkScreenSize = () => {
+    //   const screemSize = (window.innerWidth <= 880 || window.innerHeight <= 625)
+    // };
     setTimeout(function () {
       // Hide the address bar!
       window.scrollTo(0, 1);
     }, 0);
 
-    checkScreenSize(); // Check initial screen size
+    // checkScreenSize(); // Check initial screen size
 
-    window.addEventListener('resize', checkScreenSize); // Update on resize
+    // window.addEventListener('resize', checkScreenSize); // Update on resize
 
-    return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
+    // return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
   }, []);
 
   const handleSelectContent = ((pageId: number) => {
@@ -73,14 +71,10 @@ export default function Home() {
     }
   }
 
-  const desktopPageSection = [
+  const pageSection = [
     { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
     { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
-  ]
-
-  const mobilePageSection = [
-    { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
   ]
 
   useEffect(() => {
@@ -132,12 +126,12 @@ export default function Home() {
 
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
-            {/* <Profile /> */}
-            <MobileProfile1 />
+            <Profile />
+            {/* <MobileProfile1 /> */}
           </div>
 
 
-          {(isMobile ? mobilePageSection : desktopPageSection).map((page, index) => {
+          {pageSection.map((page, index) => {
             const pageId = `turn-${index + 1}`;
             return (
               <div
