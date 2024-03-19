@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Skills.css';
+import '../../styles/Skills.css';
 // import ReactLogo from '../assets/ReactLogo';
 // import VueLogo from '../assets/VueLogo';
 // import HTML5Logo from '../assets/HTML5Logo';

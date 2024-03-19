@@ -10,6 +10,7 @@ import Projects from "./components/Projects";
 import ContactUs from "./components/ContactUs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import FrontEndSkils from "./components/Mobile/FrontEndSkills";
 
 
 export default function Home() {
@@ -72,7 +73,7 @@ export default function Home() {
 
   const pageSection = [
     { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
-    { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
+    { frontPage: <FrontEndSkils key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
 
