@@ -17,7 +17,7 @@ const Projects: React.FC= () => {
                     <h3>Nutrition Website</h3> 
                     <a className='latest-project-link' href='https://nzpatelk.github.io/Nutrition-Ecomm/'><FontAwesomeIcon icon={faArrowUpRightFromSquare} style={{color: "#0055ff",}} /> Preview </a>
                 </div>
-                <p>Project Description</p>
+                <p className='project_desc'>Project Description</p>
             </div>
             <button>View All Projects</button>
         </div>
