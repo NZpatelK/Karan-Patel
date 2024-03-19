@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import FrontEndSkils from "./components/Mobile/FrontEndSkills";
 import BackEndSkils from "./components/Mobile/BackEndSkills";
+import OthersSkills from "./components/Mobile/OthersSkills";
 
 
 export default function Home() {
@@ -77,7 +78,13 @@ export default function Home() {
     { frontPage: <BackEndSkils key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
-
+  const mobilePageSection = [
+    { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
+    { frontPage: <FrontEndSkils key="skills" />, backPage: <BackEndSkils key="Backend" /> },
+    { frontPage: <OthersSkills key="otherSKills" />, backPage: <Services key="services" /> },
+    { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
+  ]
+  
   useEffect(() => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
     const totalPage = pages.length;
@@ -113,7 +120,7 @@ export default function Home() {
         setTimeout(() => {
           reversePage();
           (pages[currentPage] as HTMLElement).style.zIndex = (10 + index).toString();
-        }, 500);
+        }, 600);
       }, (index + 1) * 200 + 2100);
     });
   }, []);
@@ -131,7 +138,7 @@ export default function Home() {
           </div>
 
 
-          {pageSection.map((page, index) => {
+          {mobilePageSection.map((page, index) => {
             const pageId = `turn-${index + 1}`;
             return (
               <div
