@@ -16,7 +16,7 @@ import MongoDBLogo from '../../assets/MongoDBLogo';
 // import PythonSvg from '../assets/Python';
 
 
-const Skills: React.FC = () => {
+const BackEndSkils: React.FC = () => {
 
     // const frontEnd = [
     //     { name: 'React', logo: <ReactLogo key={0} /> },
@@ -80,4 +80,4 @@ const Skills: React.FC = () => {
     );
 };
 
-export default Skills;
+export default BackEndSkils;

@@ -16,7 +16,7 @@ import JavaLogo from '../../assets/JavaLogo';
 import PythonSvg from '../../assets/Python';
 
 
-const Skills: React.FC = () => {
+const OthersSkills: React.FC = () => {
 
     // const frontEnd = [
     //     { name: 'React', logo: <ReactLogo key={0} /> },
@@ -80,4 +80,4 @@ const Skills: React.FC = () => {
     );
 };
 
-export default Skills;
+export default OthersSkills;
