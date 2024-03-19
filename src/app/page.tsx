@@ -17,24 +17,25 @@ import OthersSkills from "./components/Mobile/OthersSkills";
 
 export default function Home() {
 
-  // const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(true);
 
 
 
   useEffect(() => {
-    // const checkScreenSize = () => {
-    //   const screemSize = (window.innerWidth <= 880 || window.innerHeight <= 625)
-    // };
+    const checkScreenSize = () => {
+      const screemSize = (window.innerWidth <= 880 || window.innerHeight <= 625)
+      setIsMobile(screemSize);
+    };
     setTimeout(function () {
       // Hide the address bar!
       window.scrollTo(0, 1);
     }, 0);
 
-    // checkScreenSize(); // Check initial screen size
+    checkScreenSize(); // Check initial screen size
 
-    // window.addEventListener('resize', checkScreenSize); // Update on resize
+    window.addEventListener('resize', checkScreenSize); // Update on resize
 
-    // return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
+    return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
   }, []);
 
   const handleSelectContent = ((pageId: number) => {
@@ -75,7 +76,7 @@ export default function Home() {
 
   const pageSection = [
     { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
-    { frontPage: <BackEndSkils key="skills" />, backPage: <Services key="services" /> },
+    { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
   const mobilePageSection = [
@@ -120,7 +121,7 @@ export default function Home() {
         setTimeout(() => {
           reversePage();
           (pages[currentPage] as HTMLElement).style.zIndex = (10 + index).toString();
-        }, 600);
+        }, (isMobile ? 600 : 500));
       }, (index + 1) * 200 + 2100);
     });
   }, []);
@@ -138,7 +139,7 @@ export default function Home() {
           </div>
 
 
-          {mobilePageSection.map((page, index) => {
+          {(isMobile ? mobilePageSection : pageSection).map((page, index) => {
             const pageId = `turn-${index + 1}`;
             return (
               <div
