@@ -59,7 +59,7 @@
 .link-btn button {
     padding: 10px 20px;
     border: 2px solid var(--main-color);
-    background:transparent;
+    background: transparent;
     color: var(--main-color);
     font-size: 16px;
     cursor: pointer;
@@ -71,4 +71,24 @@
 .link-btn button:hover {
     background: var(--main-color);
     color: #fff;
+}
+
+@media screen and (max-width: 880px),
+(max-height: 625px) {
+
+    .profile-description {
+        display: none;
+    }
+
+    .profileImg{
+        width: 150px;
+        height: 150px;
+    }
+
+    .link-btn button {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+
 }
