@@ -10,7 +10,6 @@ import Projects from "./components/Projects";
 import ContactUs from "./components/ContactUs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import MobileProfile1 from "./components/Mobile/M_Profile";
 
 
 export default function Home() {
@@ -127,7 +126,6 @@ export default function Home() {
         <div className={styles.book}>
           <div className={[styles["book-page"], styles["page-left"]].join(" ")}>
             <Profile />
-            {/* <MobileProfile1 /> */}
           </div>
 
 
