@@ -46,8 +46,8 @@ const OthersSkills: React.FC = () => {
     return (
         <div className='skill-section'>
             <h2 className='header'>Skills</h2>
-            <h2 className='subHeader'>Font-End Tools:</h2>
-            {/* <div className='logos-grids'>
+            {/* <h2 className='subHeader'>Font-End Tools:</h2>
+            <div className='logos-grids'>
                 {frontEnd.map((tool, index) => (
                     <div key={index} className='logoImg'>
                         <div>{tool.logo}</div>

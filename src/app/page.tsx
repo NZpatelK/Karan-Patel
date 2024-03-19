@@ -11,6 +11,7 @@ import ContactUs from "./components/ContactUs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import FrontEndSkils from "./components/Mobile/FrontEndSkills";
+import BackEndSkils from "./components/Mobile/BackEndSkills";
 
 
 export default function Home() {
@@ -73,7 +74,7 @@ export default function Home() {
 
   const pageSection = [
     { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
-    { frontPage: <FrontEndSkils key="skills" />, backPage: <Services key="services" /> },
+    { frontPage: <BackEndSkils key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
 
