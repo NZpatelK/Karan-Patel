@@ -3,16 +3,19 @@ import '../styles/Contents.css';
 
 type ContentsProps = {
     selectPage: (value: number) => void;
+    isMobile: boolean;
 };
 
-const Contents: React.FC<ContentsProps> = ({ selectPage}) => {
+const Contents: React.FC<ContentsProps> = ({ selectPage, isMobile}) => {
+
+    console.log('isMobile: ', isMobile);
     const sections = [
         { title: 'Introduction', id: 'introduction', page: 1, pageId: -1 },
         { title: 'About Me', id: 'about-me', page: 3, pageId: 0 },
         { title: 'Skills', id: 'skills', page: 4, pageId: 0},
-        { title: 'Services', id: 'services', page: 5, pageId: 1},
-        { title: 'Projects', id: 'projects', page: 6, pageId: 1},
-        { title: 'Contact Me', id: 'contact ', page: 7, pageId: 2},
+        { title: 'Services', id: 'services', page:(isMobile ? 7 : 5), pageId: (isMobile ? 2 : 1)},
+        { title: 'Projects', id: 'projects', page: (isMobile ? 8 : 6), pageId: (isMobile ? 2 : 1)},
+        { title: 'Contact Me', id: 'contact ', page: (isMobile ? 9 : 7), pageId: (isMobile ? 3 : 2)},
     ];
 
     return (

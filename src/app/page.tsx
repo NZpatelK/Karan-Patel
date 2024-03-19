@@ -75,12 +75,12 @@ export default function Home() {
   }
 
   const pageSection = [
-    { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
+    { frontPage: <Contents key="contents" selectPage={handleSelectContent} isMobile={isMobile} />, backPage: <AboutMe key="aboutMe" /> },
     { frontPage: <Skills key="skills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
   const mobilePageSection = [
-    { frontPage: <Contents key="contents" selectPage={handleSelectContent} />, backPage: <AboutMe key="aboutMe" /> },
+    { frontPage: <Contents key="contents" selectPage={handleSelectContent} isMobile={isMobile} />, backPage: <AboutMe key="aboutMe" /> },
     { frontPage: <FrontEndSkils key="skills" />, backPage: <BackEndSkils key="Backend" /> },
     { frontPage: <OthersSkills key="otherSKills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
