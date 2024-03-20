@@ -29,7 +29,6 @@ const Profile: React.FC = () => {
 
             <div className='link-btn'>
                 <button>Download Resume</button>
-                <button>Contact Me</button>
             </div>
 
         </div>
