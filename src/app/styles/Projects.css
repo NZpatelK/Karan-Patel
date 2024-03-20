@@ -59,7 +59,7 @@
     text-align: justify;
 }
 
-.projects-section button {
+.projects-section .linkGithub {
     margin: 20px 0 60px;
     padding: 10px 20px;
     font-size: 1em;

@@ -18,6 +18,7 @@ import OthersSkills from "./components/Mobile/OthersSkills";
 export default function Home() {
 
   const [isMobile, setIsMobile] = useState(true);
+  const [isLandscape, setIsLandscape] = useState(true);
 
 
 
@@ -25,6 +26,13 @@ export default function Home() {
     const checkScreenSize = () => {
       const screemSize = (window.innerWidth <= 880 || window.innerHeight <= 625)
       setIsMobile(screemSize);
+
+      if (window.innerWidth <= 1180 || window.innerHeight <= 750) {
+        setIsLandscape(window.innerWidth > window.innerHeight);
+      }
+      else {
+        setIsLandscape(true);
+      }
     };
     setTimeout(function () {
       // Hide the address bar!
@@ -85,7 +93,7 @@ export default function Home() {
     { frontPage: <OthersSkills key="otherSKills" />, backPage: <Services key="services" /> },
     { frontPage: <Projects key="projects" />, backPage: <ContactUs key="contactUs" /> }
   ]
-  
+
   useEffect(() => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
     const totalPage = pages.length;
@@ -129,7 +137,12 @@ export default function Home() {
 
   return (
     <main>
-      <div className={styles.wrapper}>
+
+      {!isLandscape && <div className={styles["rotate-device"]}>
+        <h1>Please rotate your device to landscape mode</h1>
+      </div>}
+
+      <div className={[styles.wrapper, !isLandscape && styles.blur].join(" ")}>
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
         <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
 
