@@ -19,7 +19,7 @@ const Projects: React.FC= () => {
                 </div>
                 <p className='project_desc'>Project Description</p>
             </div>
-            <button>View All Projects</button>
+            <a className='linkGithub' href='https://github.com/NZpatelK?tab=repositories'>View All Projects</a>
         </div>
     );
 };

@@ -16,9 +16,9 @@ const Profile: React.FC = () => {
             <h3>Web Development</h3>
 
             <div className='social-media-links'>
-                <FontAwesomeIcon className='social-media-icons' icon={faGithub} />
-                <FontAwesomeIcon className='social-media-icons' icon={faLinkedin} />
-                <FontAwesomeIcon className='social-media-icons' icon={faSquareInstagram} />
+                <a href='https://github.com/NZpatelK'><FontAwesomeIcon className='social-media-icons' icon={faGithub} /></a>
+                <a href='https://www.linkedin.com/in/karan-h-patel/'><FontAwesomeIcon className='social-media-icons' icon={faLinkedin} /></a>
+                <a href='https://www.instagram.com/designs_by_patelk/'><FontAwesomeIcon className='social-media-icons' icon={faSquareInstagram} /></a>
             </div>
 
             <div className='profile-description'>
