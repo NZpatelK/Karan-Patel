@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { EventHandler } from 'react';
 import '../styles/Profile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faSquareInstagram } from '@fortawesome/free-brands-svg-icons';

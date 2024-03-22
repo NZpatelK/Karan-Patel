@@ -12,10 +12,6 @@ const AboutMe: React.FC = () => {
             const screemSize = !!!(window.innerWidth <= 880 || window.innerHeight <= 625)
             setIsMobile(screemSize);
         };
-        setTimeout(function () {
-            // Hide the address bar!
-            window.scrollTo(0, 1);
-        }, 0);
 
         checkScreenSize(); // Check initial screen size
 
