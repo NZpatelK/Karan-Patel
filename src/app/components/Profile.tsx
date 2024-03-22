@@ -5,6 +5,12 @@ import { faGithub, faLinkedin, faSquareInstagram } from '@fortawesome/free-brand
 import Image from 'next/image'; // Import the Image component from next/image package
 
 const Profile: React.FC = () => {
+
+    const handleClickPDF = (e: React.MouseEvent<HTMLButtonElement>) => {
+        // Add your code here
+        e.preventDefault();
+        window.open('resume.pdf')
+    }
     return (
         <div className='profile-section'>
 
@@ -28,7 +34,7 @@ const Profile: React.FC = () => {
             </div>
 
             <div className='link-btn'>
-                <button>Download Resume</button>
+                <button onClick={handleClickPDF}>Download Resume</button>
             </div>
 
         </div>
