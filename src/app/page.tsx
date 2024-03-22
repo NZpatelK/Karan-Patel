@@ -19,6 +19,7 @@ export default function Home() {
 
   const [isMobile, setIsMobile] = useState(true);
   const [isLandscape, setIsLandscape] = useState(true);
+  const scrollInto = useRef(null)
 
 
 
@@ -34,6 +35,8 @@ export default function Home() {
         setIsLandscape(true);
       }
     };
+
+
     setTimeout(function () {
       // Hide the address bar!
       window.scrollTo(0, 1);
