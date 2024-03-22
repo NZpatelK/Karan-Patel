@@ -9,7 +9,7 @@ const Profile: React.FC = () => {
     const handleClickPDF = (e: React.MouseEvent<HTMLButtonElement>) => {
         // Add your code here
         e.preventDefault();
-        window.open('/resume.pdf')
+        window.open('/Karan-Patel/resume.pdf')
     }
     return (
         <div className='profile-section'>
