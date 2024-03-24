@@ -2,6 +2,7 @@ import React, { EventHandler } from 'react';
 import '../styles/Profile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faSquareInstagram } from '@fortawesome/free-brands-svg-icons';
+import profileImg from '../assets/profileImg.jpeg'
 import Image from 'next/image'; // Import the Image component from next/image package
 
 const Profile: React.FC = () => {
@@ -14,7 +15,7 @@ const Profile: React.FC = () => {
     return (
         <div className='profile-section'>
 
-            <Image src='https://avatars.githubusercontent.com/u/60243726?v=4' alt='profile' className='profileImg' width={200} height={200} /> {/* Replace <img> with <Image> */}
+            <Image src={profileImg} alt='profile' className='profileImg' width={200} height={200} />
 
             <h1>Karan Patel</h1>
 
