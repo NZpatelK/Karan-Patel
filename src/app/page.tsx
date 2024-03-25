@@ -136,7 +136,7 @@ export default function Home() {
 
 
   return (
-    <main>
+    <main style={{position: "absolute", top:'0'}}>
 
       {!isLandscape && <div className={styles["rotate-device"]}>
         <h1>Please rotate your device to landscape mode</h1>
