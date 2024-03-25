@@ -39,10 +39,6 @@ export default function Home() {
     };
 
 
-    setTimeout(function () {
-      window.scrollTo(0, 1);
-    }, 0);
-
     checkScreenSize(); // Check initial screen size
 
     window.addEventListener('resize', checkScreenSize); // Update on resize
