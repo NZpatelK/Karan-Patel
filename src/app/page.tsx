@@ -19,7 +19,7 @@ export default function Home() {
 
   const [isMobile, setIsMobile] = useState(true);
   const [isLandscape, setIsLandscape] = useState(true);
-  const[[minHeight, minWidth], setScreenSize] = useState([0, 0]);
+  const [fullScreen, setFullScreen] = useState(true);
 
 
 
@@ -31,7 +31,7 @@ export default function Home() {
 
       if (window.innerWidth <= 1180 || window.innerHeight <= 750) {
         setIsLandscape(window.innerWidth > window.innerHeight);
-        setScreenSize([window.innerHeight, window.innerWidth]);
+        setFullScreen(false);
       }
       else {
         setIsLandscape(true);
@@ -39,12 +39,22 @@ export default function Home() {
     };
 
 
+    setTimeout(function () {
+      window.scrollTo(0, 1);
+    }, 0);
+
     checkScreenSize(); // Check initial screen size
 
     window.addEventListener('resize', checkScreenSize); // Update on resize
 
     return () => window.removeEventListener('resize', checkScreenSize); // Clean up event listener
   }, []);
+
+  const handleFullScreen = () => {
+     
+    fullScreen ? document.exitFullscreen() : (document.documentElement.requestFullscreen(), setFullScreen(true));
+
+  }
 
   const handleSelectContent = ((pageId: number) => {
     const pages = document.querySelectorAll(`.${styles["book-page"]}.${styles["page-right"]}`);
@@ -132,17 +142,20 @@ export default function Home() {
         }, (isMobile ? 600 : 500));
       }, (index + 1) * 200 + 2100);
     });
-  }, []);
+  }, [isMobile]);
 
 
   return (
-    <main style={{position: "absolute", top:'0'}}>
+    <main className="mainPage">
 
       {!isLandscape && <div className={styles["rotate-device"]}>
         <h1>Please rotate your device to landscape mode</h1>
       </div>}
+      {(!fullScreen && isLandscape) && <div className={styles["rotate-device"]}>
+        <button onClick={handleFullScreen}>click full screen to view better</button>
+      </div>}
 
-      <div className={[styles.wrapper, !isLandscape && styles.blur].join(" ")} style={isLandscape ? {width: minWidth, height: minHeight} : {}} >
+      <div className={[styles.wrapper, (!isLandscape || !fullScreen) && styles.blur].join(" ")}>
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
         <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
 
