@@ -19,7 +19,8 @@ export default function Home() {
 
   const [isMobile, setIsMobile] = useState(true);
   const [isLandscape, setIsLandscape] = useState(true);
-  const scrollInto = useRef(null)
+  const[[minHeight, minWidth], setScreenSize] = useState([0, 0]);
+
 
 
 
@@ -30,6 +31,7 @@ export default function Home() {
 
       if (window.innerWidth <= 1180 || window.innerHeight <= 750) {
         setIsLandscape(window.innerWidth > window.innerHeight);
+        setScreenSize([window.innerHeight, window.innerWidth]);
       }
       else {
         setIsLandscape(true);
@@ -38,7 +40,6 @@ export default function Home() {
 
 
     setTimeout(function () {
-      // Hide the address bar!
       window.scrollTo(0, 1);
     }, 0);
 
@@ -145,7 +146,7 @@ export default function Home() {
         <h1>Please rotate your device to landscape mode</h1>
       </div>}
 
-      <div className={[styles.wrapper, !isLandscape && styles.blur].join(" ")}>
+      <div className={[styles.wrapper, !isLandscape && styles.blur].join(" ")} style={isLandscape ? {width: minWidth, height: minHeight} : {}} >
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
         <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
 
