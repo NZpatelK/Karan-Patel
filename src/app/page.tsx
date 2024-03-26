@@ -9,7 +9,7 @@ import Services from "./components/Services";
 import Projects from "./components/Projects";
 import ContactUs from "./components/ContactUs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { faCaretRight, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 import FrontEndSkils from "./components/Mobile/FrontEndSkills";
 import BackEndSkils from "./components/Mobile/BackEndSkills";
 import OthersSkills from "./components/Mobile/OthersSkills";
@@ -19,7 +19,7 @@ export default function Home() {
 
   const [isMobile, setIsMobile] = useState(true);
   const [isLandscape, setIsLandscape] = useState(true);
-  const [fullScreen, setFullScreen] = useState(true);
+  const [isFullScreen, setIsFullScreen] = useState(true);
 
 
 
@@ -31,10 +31,11 @@ export default function Home() {
 
       if (window.innerWidth <= 1180 || window.innerHeight <= 750) {
         setIsLandscape(window.innerWidth > window.innerHeight);
-        setFullScreen(false);
+        setIsFullScreen(true);
       }
       else {
         setIsLandscape(true);
+        setIsFullScreen(false);
       }
     };
 
@@ -51,8 +52,8 @@ export default function Home() {
   }, []);
 
   const handleFullScreen = () => {
-     
-    fullScreen ? document.exitFullscreen() : (document.documentElement.requestFullscreen(), setFullScreen(true));
+
+    isFullScreen ? (document.documentElement.requestFullscreen(), setIsFullScreen(false)) : (document.exitFullscreen(), setIsFullScreen(true));
 
   }
 
@@ -151,11 +152,12 @@ export default function Home() {
       {!isLandscape && <div className={styles["rotate-device"]}>
         <h1>Please rotate your device to landscape mode</h1>
       </div>}
-      {(!fullScreen && isLandscape) && <div className={styles["rotate-device"]}>
-        <button onClick={handleFullScreen}>click full screen to view better</button>
+      {(isFullScreen && isLandscape) && <div className={styles["rotate-device"]}>
+        <button className="enter-fullScreen" onClick={handleFullScreen}>
+        Click for full screen for better viewing. Tap the <FontAwesomeIcon className='xIcon' icon={faSquareXmark} onClick={handleFullScreen} /> to exit. </button>
       </div>}
 
-      <div className={[styles.wrapper, (!isLandscape || !fullScreen) && styles.blur].join(" ")}>
+      <div className={[styles.wrapper, (!isLandscape || isFullScreen) && styles.blur].join(" ")}>
         <div className={[styles.cover, styles["cover-left"]].join(" ")}></div>
         <div className={[styles.cover, styles["cover-right"]].join(" ")}></div>
 
@@ -173,6 +175,7 @@ export default function Home() {
                 id={pageId}
                 className={[styles["book-page"], styles["page-right"], styles["turn"]].join(" ")}>
                 <div className={styles["page-front"]}>
+                  {isMobile && <FontAwesomeIcon className='exit-fullScreen' icon={faSquareXmark} onClick={handleFullScreen} />}
                   {page.frontPage}
                   <FontAwesomeIcon className='next page-btn' icon={faCaretRight} onClick={() => { handleTurnPage(pageId, index) }} />
                 </div>

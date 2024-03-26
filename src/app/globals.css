@@ -59,6 +59,38 @@ a {
   transform: rotateY(180deg);
 }
 
+.exit-fullScreen{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  color: var(--main-color);
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.enter-fullScreen{
+  background-color: #303030;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.xIcon{
+  color: var(--main-color);
+  font-size: 25px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
