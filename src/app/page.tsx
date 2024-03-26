@@ -154,7 +154,7 @@ export default function Home() {
       </div>}
       {(isFullScreen && isLandscape) && <div className={styles["rotate-device"]}>
         <button className="enter-fullScreen" onClick={handleFullScreen}>
-        Click for full screen for better viewing. Tap the <FontAwesomeIcon className='xIcon' icon={faSquareXmark} onClick={handleFullScreen} /> to exit. </button>
+        Click Me for full screen for better viewing. Tap the <FontAwesomeIcon className='xIcon' icon={faSquareXmark} onClick={handleFullScreen} /> to exit. </button>
       </div>}
 
       <div className={[styles.wrapper, (!isLandscape || isFullScreen) && styles.blur].join(" ")}>
